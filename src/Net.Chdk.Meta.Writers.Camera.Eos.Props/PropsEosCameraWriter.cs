@@ -8,12 +8,12 @@ namespace Net.Chdk.Meta.Writers.Camera.Eos.Props
 {
     sealed class PropsEosCameraWriter : PropsCameraWriter<EosCameraData, EosCameraModelData, EosCardData>, IEosCameraWriter
     {
-        protected override void WriteModel(TextWriter writer, string id, EosCameraModelData model)
+        protected override void WriteModel(TextWriter writer, uint id, EosCameraModelData model)
         {
             WriteVersions(writer, id, model.Platform, model.Versions);
         }
 
-        private static void WriteVersions(TextWriter writer, string id, string platform, IDictionary<string, VersionData> versions)
+        private static void WriteVersions(TextWriter writer, uint id, string platform, IDictionary<string, VersionData> versions)
         {
             foreach (var kvp in versions)
             {
@@ -21,10 +21,10 @@ namespace Net.Chdk.Meta.Writers.Camera.Eos.Props
             }
         }
 
-        private static void WriteVersion(TextWriter writer, string id, string platform, string versionKey, string versionValue)
+        private static void WriteVersion(TextWriter writer, uint id, string platform, string versionKey, string versionValue)
         {
             var version = GetVersion(versionKey);
-            writer.WriteLine($"{id}-{version}={platform}-{versionValue}");
+            writer.WriteLine($"0x{id:x}-{version}={platform}-{versionValue}");
         }
 
         private static string GetVersion(string versionKey)
