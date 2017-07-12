@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Net.Chdk.Meta.Writers.Camera.Eos.Props
 {
-    sealed class PropsEosCameraWriter : PropsCameraWriter<EosCameraData, EosCameraModelData, EosCardData>, IEosCameraWriter
+    sealed class PropsEosCameraWriter : PropsCameraWriter<EosCameraData, EosCameraModelData, EosCardData>, IEosInnerCameraWriter
     {
         protected override void WriteModel(TextWriter writer, uint id, EosCameraModelData model)
         {

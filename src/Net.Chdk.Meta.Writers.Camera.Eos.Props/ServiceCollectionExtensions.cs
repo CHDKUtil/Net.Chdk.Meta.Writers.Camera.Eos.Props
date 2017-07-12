@@ -7,7 +7,7 @@ namespace Net.Chdk.Meta.Writers.Camera.Eos.Props
         public static IServiceCollection AddPropsEosCameraWriter(this IServiceCollection serviceCollection)
         {
             return serviceCollection
-                .AddSingleton<IEosCameraWriter, PropsEosCameraWriter>();
+                .AddSingleton<IEosInnerCameraWriter, PropsEosCameraWriter>();
         }
     }
 }
